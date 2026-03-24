@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bricolageGrotesque = Bricolage_Grotesque({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-bricolage",
 });
 
 export const metadata: Metadata = {
@@ -24,8 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${bricolageGrotesque.variable} h-full antialiased`}
       lang="en"
+      style={{ fontFamily: "var(--font-bricolage)" }}
     >
       <body className="flex min-h-full flex-col">{children}</body>
     </html>
