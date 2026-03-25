@@ -33,6 +33,7 @@
       "hidden": true
     }
   ],
+  "releaseCommitMessageFormat": "chore(release): {{currentTag}}",
   "commitUrlFormat": "https://github.com/thecodingmontana/latte/commit/{{hash}}",
   "compareUrlFormat": "https://github.com/thecodingmontana/latte/compare/{{previousTag}}...{{currentTag}}"
 }
