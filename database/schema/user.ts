@@ -7,6 +7,7 @@ import {
   serial,
   text,
   timestamp,
+  uuid,
   varchar,
 } from "drizzle-orm/pg-core";
 import { generateNanoId, pgTable, timestamps } from "../utils";
@@ -112,9 +113,7 @@ export const passkey_credential = pgTable("passkey_credential", {
 });
 
 export const cronJobTable = pgTable("cron_jobs", {
-  id: varchar("id", { length: 16 })
-    .primaryKey()
-    .$defaultFn(() => generateNanoId()),
+  id: uuid().notNull().primaryKey().defaultRandom(),
   message: text("message"),
   created_at: timestamp("created_at", {
     withTimezone: true,

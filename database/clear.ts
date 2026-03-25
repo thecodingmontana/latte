@@ -1,4 +1,5 @@
 /** biome-ignore-all lint/suspicious/noConsole: ignore all */
+import "dotenv/config";
 
 import fs from "node:fs";
 import path from "node:path";
@@ -38,12 +39,7 @@ async function main() {
     `)
   );
 
-  const migrationsDir = path.join(
-    process.cwd(),
-    "src",
-    "database",
-    "migrations"
-  );
+  const migrationsDir = path.join(process.cwd(), "database", "migrations");
 
   console.log("migrationsDir", migrationsDir);
 
