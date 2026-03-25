@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.0](https://github.com/thecodingmontana/latte/compare/v0.1.3...v0.2.0) (2026-03-25)
+
+### ✨ Features
+
+* **app:** :sparkles: added drizzle and supabase db support ([4608857](https://github.com/thecodingmontana/latte/commit/4608857dbc3c6c624eb0c8e1ea84ee1fca36e131))
+
 ## [0.1.3](https://github.com/thecodingmontana/latte/compare/v0.1.2...v0.1.3) (2026-03-25)
 
 ### 🐛 Bug Fixes
