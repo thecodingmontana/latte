@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.0](https://github.com/thecodingmontana/latte/compare/v0.0.11...v0.1.0) (2026-03-25)
+
+### ✨ Features
+
+* **app:** :sparkles: added settings icon ([5b126e4](https://github.com/thecodingmontana/latte/commit/5b126e4de8be92a474df98896cabe163490f0e4e))
+
 ## [0.0.11](https://github.com/thecodingmontana/latte/compare/v0.0.10...v0.0.11) (2026-03-25)
 
 ### 🐛 Bug Fixes

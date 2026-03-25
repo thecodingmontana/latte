@@ -3,10 +3,12 @@
   "git": {
     "tagName": "v${version}",
     "push": true,
-    "pushArgs": ["--follow-tags"],
+    "pushRepo": "origin",
+    "pushArgs": ["--follow-tags", "origin", "main"],
     "requireCleanWorkingDir": true,
     "requireUpstream": true,
-    "commit": false
+    "commit": false,
+    "tag": true
   },
   "github": {
     "release": false
