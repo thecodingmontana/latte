@@ -3,23 +3,29 @@ on:
   schedule:
     - cron: "0 0 * * *"
   workflow_dispatch:
-
 jobs:
   update-cron-job:
     runs-on: ubuntu-latest
     steps:
       - name: Insert cron job with message
+        env:
+          KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: |
+          echo "Key prefix: ${KEY:0:10}"
           DATE_STR=$(date -u +"%A, %d %B, %Y")
           MESSAGE="Cron job created on $DATE_STR"
 
-          http_code=$(curl -s -o /dev/null -w "%{http_code}" -X POST "${{ secrets.SUPABASE_URL }}/rest/v1/app_cron_jobs" \
+          response=$(curl -s -w "\n%{http_code}" -X POST "${{ secrets.SUPABASE_URL }}/rest/v1/app_cron_jobs" \
             -H "apikey: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
             -H "Authorization: Bearer ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}" \
             -H "Content-Type: application/json" \
             -d "{\"message\": \"$MESSAGE\"}")
 
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | head -n -1)
+
           echo "HTTP status: $http_code"
+          echo "Response body: $body"
 
           if [ "$http_code" -ne 201 ] && [ "$http_code" -ne 200 ]; then
             echo "Failed to insert cron job. HTTP code: $http_code"
