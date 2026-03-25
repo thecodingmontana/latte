@@ -6,20 +6,19 @@ import { useState } from "react";
 import { IconArrowRight } from "@/components/svgs/icons/arrow-right";
 import { IconLockPassword } from "@/components/svgs/icons/lock-password";
 import type { AuthFormData } from "@/types/auth";
-import SigninForm from "./signin-form";
-import SigninVerifyOTPWrapper from "./signin-verify-otp-wrapper";
+import SignupForm from "./signup-form";
+import SignupVerifyOTPWrapper from "./signup-verify-otp-wrapper";
 
-export default function SigninWrapper() {
+export default function SignupWrapper() {
   const [isOtpSent, setIsOtpSent] = useState(false);
   const [formData, setFormData] = useState<AuthFormData>({
     email: "",
     password: "",
   });
-
   return (
     <>
       {isOtpSent ? (
-        <SigninVerifyOTPWrapper
+        <SignupVerifyOTPWrapper
           formData={formData}
           isOtpSent={isOtpSent}
           setFormData={setFormData}
@@ -28,7 +27,7 @@ export default function SigninWrapper() {
       ) : (
         <motion.div
           animate={{ opacity: 1, y: 0 }}
-          className="mx-auto flex w-full max-w-102 flex-col gap-8 p-5"
+          className="mx-auto flex w-full max-w-102 flex-col gap-6 p-5"
           initial={{ opacity: 0, y: 20 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
@@ -51,17 +50,17 @@ export default function SigninWrapper() {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <h1 className="font-medium text-2xl text-zinc-950 leading-8 dark:text-white/90">
-              Sign in to your account
+              Get Started Now
             </h1>
             <div className="flex items-center gap-1">
               <p className="text-sm text-zinc-900/50 tracking-tight dark:text-white/50">
-                Don&apos;t have an account?
+                Already have an account?
               </p>
               <Link
                 className="flex items-center justify-center gap-1 font-medium text-brand text-sm outline-none hover:text-brand-secondary disabled:pointer-events-none disabled:text-zinc-950/10 dark:disabled:text-white/20 dark:hover:text-brand-secondary"
-                href="/auth/signup"
+                href="/auth/signin"
               >
-                <p>Get Started</p>
+                <p>Sign in</p>
                 <IconArrowRight className="size-4" />
               </Link>
             </div>
@@ -71,7 +70,7 @@ export default function SigninWrapper() {
             initial={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-            <SigninForm setFormData={setFormData} setIsOtpSent={setIsOtpSent} />
+            <SignupForm setFormData={setFormData} setIsOtpSent={setIsOtpSent} />
           </motion.div>
         </motion.div>
       )}
