@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.1](https://github.com/thecodingmontana/latte/compare/v0.1.0...v0.1.1) (2026-03-25)
+
+### 🐛 Bug Fixes
+
+* **app:** resolve release-it commit and push issues ([71b7e91](https://github.com/thecodingmontana/latte/commit/71b7e91dba31fc63dd1b379ae4067d6b0fcadec4))
+
 ## [0.1.0](https://github.com/thecodingmontana/latte/compare/v0.0.11...v0.1.0) (2026-03-25)
 
 ### ✨ Features
