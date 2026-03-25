@@ -1,0 +1,38 @@
+{
+  "types": [
+    {
+      "type": "feat",
+      "section": "✨ Features"
+    },
+    {
+      "type": "fix",
+      "section": "🐛 Bug Fixes"
+    },
+    {
+      "type": "perf",
+      "section": "⚡ Performance"
+    },
+    {
+      "type": "refactor",
+      "section": "♻️ Refactors"
+    },
+    {
+      "type": "docs",
+      "section": "📝 Docs"
+    },
+    {
+      "type": "chore",
+      "hidden": true
+    },
+    {
+      "type": "style",
+      "hidden": true
+    },
+    {
+      "type": "test",
+      "hidden": true
+    }
+  ],
+  "commitUrlFormat": "https://github.com/thecodingmontana/latte/commit/{{hash}}",
+  "compareUrlFormat": "https://github.com/thecodingmontana/latte/compare/{{previousTag}}...{{currentTag}}"
+}

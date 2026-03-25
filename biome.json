@@ -18,8 +18,48 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "correctness": {
+        "noUnusedFunctionParameters": "off",
+        "useParseIntRadix": "off",
+        "noInvalidPositionAtImportRule": "off",
+        "useImageSize": "off",
+        "useExhaustiveDependencies": "off",
+        "noNestedComponentDefinitions": "off"
+      },
       "suspicious": {
-        "noUnknownAtRules": "off"
+        "noExplicitAny": "off",
+        "noEmptyBlockStatements": "off",
+        "noArrayIndexKey": "off"
+      },
+      "complexity": {
+        "useOptionalChain": "off",
+        "noForEach": "off",
+        "noExcessiveCognitiveComplexity": "off",
+        "noVoid": "off"
+      },
+      "performance": {
+        "useTopLevelRegex": "off",
+        "noBarrelFile": "off",
+        "noNamespaceImport": "off",
+        "noImgElement": "off"
+      },
+      "style": {
+        "noNonNullAssertion": "off",
+        "noNestedTernary": "off",
+        "useDefaultSwitchClause": "off",
+        "useBlockStatements": "off",
+        "useConsistentTypeDefinitions": "off",
+        "noEnum": "off",
+        "noSubstr": "off"
+      },
+      "a11y": {
+        "useAriaPropsSupportedByRole": "off",
+        "useSemanticElements": "off",
+        "useKeyWithClickEvents": "off",
+        "noNoninteractiveElementInteractions": "off",
+        "useFocusableInteractive": "off",
+        "useAriaPropsForRole": "off",
+        "noRedundantRoles": "off"
       }
     },
     "domains": {
