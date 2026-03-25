@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.11](https://github.com/thecodingmontana/latte/compare/v0.0.10...v0.0.11) (2026-03-25)
+
+### 🐛 Bug Fixes
+
+* **app:** :bug: skip redundant release commit in release-it config ([8ff41f2](https://github.com/thecodingmontana/latte/commit/8ff41f2df1a651583828b5dc94ef48264af041be))
+
 ## [0.0.10](https://github.com/thecodingmontana/latte/compare/v0.0.9...v0.0.10) (2026-03-25)
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
