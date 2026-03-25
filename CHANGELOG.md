@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.3](https://github.com/thecodingmontana/latte/compare/v0.1.2...v0.1.3) (2026-03-25)
+
+### 🐛 Bug Fixes
+
+* **app:** commit changelog and package.json on release ([a946fdf](https://github.com/thecodingmontana/latte/commit/a946fdf81c3433f549efa8c2fe3d428bf27e1966))
+
 ## [0.1.2](https://github.com/thecodingmontana/latte/compare/v0.1.1...v0.1.2) (2026-03-25)
 
 ### 🐛 Bug Fixes
