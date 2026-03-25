@@ -34,6 +34,12 @@
     }
   ],
   "releaseCommitMessageFormat": "chore(release): {{currentTag}}",
+  "parserOpts": {
+    "noteKeywords": ["BREAKING CHANGE", "BREAKING-CHANGE"]
+  },
+  "writerOpts": {
+    "commitsSort": ["subject", "scope"]
+  },
   "commitUrlFormat": "https://github.com/thecodingmontana/latte/commit/{{hash}}",
   "compareUrlFormat": "https://github.com/thecodingmontana/latte/compare/{{previousTag}}...{{currentTag}}"
 }
