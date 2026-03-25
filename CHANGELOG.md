@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/thecodingmontana/latte/compare/v0.0.5...v0.0.6) (2026-03-25)
+
+
+### ✨ Features
+
+* **app:** :sparkles: update the standard version .versionrs.json file ([961fd4e](https://github.com/thecodingmontana/latte/commit/961fd4e8f2cc2d75c09684a74c86355039d8e0ce))
+
 ### [0.0.5](https://github.com/thecodingmontana/latte/compare/v0.0.4...v0.0.5) (2026-03-25)
 
 
