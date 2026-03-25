@@ -1,10 +1,12 @@
 {
   "$schema": "https://unpkg.com/release-it/schema/release-it.json",
   "git": {
-    "commitMessage": "chore: release v${version}",
     "tagName": "v${version}",
     "push": true,
-    "pushArgs": ["--follow-tags"]
+    "pushArgs": ["--follow-tags"],
+    "requireCleanWorkingDir": true,
+    "requireUpstream": true,
+    "commit": false
   },
   "github": {
     "release": false
@@ -38,6 +40,10 @@
             "section": "📝 Docs"
           },
           {
+            "type": "revert",
+            "section": "⏪ Reverts"
+          },
+          {
             "type": "chore",
             "hidden": true
           },
@@ -60,16 +66,18 @@
           {
             "type": "ci",
             "hidden": true
-          },
-          {
-            "type": "revert",
-            "section": "⏪ Reverts"
           }
         ]
       },
       "infile": "CHANGELOG.md",
+      "ignoreRecommendedBump": false,
+      "strictSemVer": true,
       "commitUrlFormat": "https://github.com/thecodingmontana/latte/commit/{{hash}}",
-      "compareUrlFormat": "https://github.com/thecodingmontana/latte/compare/{{previousTag}}...{{currentTag}}"
+      "compareUrlFormat": "https://github.com/thecodingmontana/latte/compare/{{previousTag}}...{{currentTag}}",
+      "issueUrlFormat": "https://github.com/thecodingmontana/latte/issues/{{id}}"
     }
+  },
+  "hooks": {
+    "after:release": "echo '✅ Released v${version} successfully!'"
   }
 }
