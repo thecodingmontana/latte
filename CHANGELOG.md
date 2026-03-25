@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.1](https://github.com/thecodingmontana/latte/compare/v0.2.0...v0.2.1) (2026-03-25)
+
+### 🐛 Bug Fixes
+
+* **app:** :bug: resolve next.config.ts build errors and stabilize GitHub Actions cron job ([0c108ee](https://github.com/thecodingmontana/latte/commit/0c108eed4036f9cad2368f01778cac4622d44202))
+
 ## [0.2.0](https://github.com/thecodingmontana/latte/compare/v0.1.3...v0.2.0) (2026-03-25)
 
 ### ✨ Features
