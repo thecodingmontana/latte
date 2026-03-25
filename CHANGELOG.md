@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/thecodingmontana/latte/compare/v0.0.7...v0.0.8) (2026-03-25)
+
+
+### 🐛 Bug Fixes
+
+* **app:** removed use-emoji in commitlint to fix standard version bumping versioning ([1e16357](https://github.com/thecodingmontana/latte/commit/1e163577a1f19f2ef1612f0c23ac5b90b22053f4))
+
 ### [0.0.7](https://github.com/thecodingmontana/latte/compare/v0.0.6...v0.0.7) (2026-03-25)
 
 
