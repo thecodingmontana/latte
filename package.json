@@ -17,7 +17,7 @@
     "commit": "git add . && git cz",
     "optimize-images": "node scripts/optimize-images.mjs",
     "prebuild": "node scripts/optimize-images.mjs",
-    "release": "standard-version",
+    "release": "standard-version && git push --follow-tags origin main",
     "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major",
     "release:patch": "standard-version --release-as patch"
