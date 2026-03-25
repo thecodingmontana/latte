@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/thecodingmontana/latte/compare/v0.0.8...v0.0.9) (2026-03-25)
+
+
+### ✨ Features
+
+* **app:** added the signup ui ([6190707](https://github.com/thecodingmontana/latte/commit/619070762f3f72e91a41f7e8144c8dd363b15346))
+
 ### [0.0.8](https://github.com/thecodingmontana/latte/compare/v0.0.7...v0.0.8) (2026-03-25)
 
 
