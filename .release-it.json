@@ -1,0 +1,75 @@
+{
+  "$schema": "https://unpkg.com/release-it/schema/release-it.json",
+  "git": {
+    "commitMessage": "chore: release v${version}",
+    "tagName": "v${version}",
+    "push": true,
+    "pushArgs": ["--follow-tags"]
+  },
+  "github": {
+    "release": false
+  },
+  "npm": {
+    "publish": false
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": {
+        "name": "conventionalcommits",
+        "types": [
+          {
+            "type": "feat",
+            "section": "✨ Features"
+          },
+          {
+            "type": "fix",
+            "section": "🐛 Bug Fixes"
+          },
+          {
+            "type": "perf",
+            "section": "⚡ Performance"
+          },
+          {
+            "type": "refactor",
+            "section": "♻️ Refactors"
+          },
+          {
+            "type": "docs",
+            "section": "📝 Docs"
+          },
+          {
+            "type": "chore",
+            "hidden": true
+          },
+          {
+            "type": "style",
+            "hidden": true
+          },
+          {
+            "type": "test",
+            "hidden": true
+          },
+          {
+            "type": "init",
+            "hidden": true
+          },
+          {
+            "type": "build",
+            "hidden": true
+          },
+          {
+            "type": "ci",
+            "hidden": true
+          },
+          {
+            "type": "revert",
+            "section": "⏪ Reverts"
+          }
+        ]
+      },
+      "infile": "CHANGELOG.md",
+      "commitUrlFormat": "https://github.com/thecodingmontana/latte/commit/{{hash}}",
+      "compareUrlFormat": "https://github.com/thecodingmontana/latte/compare/{{previousTag}}...{{currentTag}}"
+    }
+  }
+}
