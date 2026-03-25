@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.2](https://github.com/thecodingmontana/latte/compare/v0.1.1...v0.1.2) (2026-03-25)
+
+### 🐛 Bug Fixes
+
+* **app:** fix release-it push config ([941937d](https://github.com/thecodingmontana/latte/commit/941937de69190b16fa060eff4840824443c4b424))
+
 ## [0.1.1](https://github.com/thecodingmontana/latte/compare/v0.1.0...v0.1.1) (2026-03-25)
 
 ### 🐛 Bug Fixes
