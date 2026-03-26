@@ -1,5 +1,7 @@
 # Changelog
 
+## [0.2.6](https://github.com/thecodingmontana/latte/compare/v0.2.5...v0.2.6) (2026-03-26)
+
 ## [0.2.5](https://github.com/thecodingmontana/latte/compare/v0.2.4...v0.2.5) (2026-03-26)
 
 ### 🐛 Bug Fixes
