@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.5](https://github.com/thecodingmontana/latte/compare/v0.2.4...v0.2.5) (2026-03-26)
+
+### 🐛 Bug Fixes
+
+* **app:** :bug: install dotenv types to resolve TypeScript module declaration error ([be00b10](https://github.com/thecodingmontana/latte/commit/be00b10c1e781d64d77c0f86cdb517b3acc203e5))
+
 ## [0.2.4](https://github.com/thecodingmontana/latte/compare/v0.2.3...v0.2.4) (2026-03-25)
 
 ### 🐛 Bug Fixes
