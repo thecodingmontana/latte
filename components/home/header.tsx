@@ -12,7 +12,7 @@ export default function Header() {
       {/* Logo - slides in from left */}
       <motion.span
         animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-        className="bg-linear-to-b from-blue-200 to-blue-800 bg-clip-text font-bold text-lg text-transparent tracking-tighter sm:text-4xl md:text-4xl"
+        className="bg-clip-text font-bold text-brand text-lg tracking-tighter sm:text-4xl md:text-4xl dark:text-primary"
         initial={{ opacity: 0, x: -24, filter: "blur(6px)" }}
         transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1], delay: 0.1 }}
       >
@@ -33,7 +33,7 @@ export default function Header() {
           whileTap={{ scale: 0.95 }}
         >
           <Link
-            className="rounded-md bg-blue-600 px-4 py-2 font-semibold text-white text-xs shadow transition hover:bg-blue-700"
+            className="rounded-md bg-brand px-4 py-2 font-semibold text-white text-xs shadow transition hover:bg-brand-secondary"
             href="/auth/signup"
           >
             Get Started

@@ -51,7 +51,7 @@ export default function HeroContent() {
     >
       {/* Heading — slides up from below with blur */}
       <motion.h1
-        className="max-w-4xl font-medium text-3xl capitalize tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl"
+        className="max-w-4xl font-medium text-3xl text-brand capitalize tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl dark:text-primary"
         variants={fadeUp}
       >
         The personal finance app for everyone.
@@ -77,7 +77,7 @@ export default function HeroContent() {
           whileTap={{ scale: 0.95 }}
         >
           <Link
-            className="inline-block rounded-md bg-linear-to-t from-blue-600 to-blue-500 px-6 py-3 font-semibold text-sm text-white shadow hover:brightness-105"
+            className="inline-block rounded-md bg-brand px-6 py-3 font-semibold text-sm text-white shadow hover:brightness-105"
             href="/auth/signup"
           >
             Get started for free today

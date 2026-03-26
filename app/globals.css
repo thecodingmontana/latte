@@ -59,6 +59,7 @@
   --color-brand: var(--brand);
   --color-brand-secondary: var(--brand-secondary);
   --color-app-sidebar: var(--app-sidebar);
+  --color-pattern: var(--pattern);
 }
 
 :root {
@@ -103,9 +104,10 @@
   --warning-foreground: var(--color-yellow-900);
   --invert: var(--color-zinc-900);
   --invert-foreground: var(--color-zinc-50);
-  --brand: oklch(0.5765 0.2072 255.41);
-  --brand-secondary: oklch(0.6231 0.1886 248.32);
+  --brand: oklch(0.36 0.06 176);
+  --brand-secondary: oklch(0.42 0.055 182);
   --app-sidebar: oklch(97.46% 0.0035 257.64);
+  --pattern: oklch(0.42 0.055 182);
 }
 
 .dark {
@@ -167,13 +169,13 @@
 
 #nprogress .bar {
   height: 3px;
-  background: oklch(0.5765 0.2072 255.41) !important;
+  background: oklch(0.36 0.06 176) !important;
 }
 
 #nprogress .peg {
   box-shadow:
-    0 0 10px oklch(0.5765 0.2072 255.41),
-    0 0 5px oklch(0.5765 0.2072 255.41);
+    0 0 10px oklch(0.36 0.06 176),
+    0 0 5px oklch(0.36 0.06 176);
 }
 
 #nprogress .spinner-icon {
