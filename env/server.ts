@@ -1,4 +1,4 @@
-import { createEnv } from "@t3-oss/env-core";
+import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 
 export const env = createEnv({
@@ -7,5 +7,5 @@ export const env = createEnv({
     UPSTASH_URL: z.string().min(1),
     UPSTASH_TOKEN: z.string().min(1),
   },
-  runtimeEnv: process.env,
+  experimental__runtimeEnv: process.env,
 });
