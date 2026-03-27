@@ -104,7 +104,7 @@ export default function OauthProviders({ isAuthenticating }: OauthButtonProps) {
             <button
               aria-label={`${auth.text} - OAuth authentication`}
               className={cn(
-                "flex h-10.5 w-full items-center justify-center gap-2 rounded-[10px] border px-2 font-medium text-sm transition-colors duration-200 hover:border-orange-200 focus:outline-none focus:ring-2 focus:ring-orange-200 focus:ring-offset-1",
+                "flex h-10.5 w-full items-center justify-center gap-2 rounded-[10px] border px-2 font-medium text-sm transition-colors duration-200 hover:border-brand/20 focus:outline-none focus:ring-2 focus:ring-brand/20 focus:ring-offset-1",
                 isButtonDisabled
                   ? "cursor-not-allowed opacity-60"
                   : "cursor-pointer"
