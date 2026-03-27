@@ -5,6 +5,11 @@ export function proxy(request: NextRequest): NextResponse {
   if (request.method === "GET") {
     const response = NextResponse.next();
     const token = request.cookies.get("session")?.value ?? null;
+
+    if (token === null && request.nextUrl.pathname.startsWith("/account")) {
+      return NextResponse.redirect(new URL("/auth/signin", request.url));
+    }
+
     if (token !== null) {
       response.cookies.set("session", token, {
         path: "/",
@@ -14,6 +19,7 @@ export function proxy(request: NextRequest): NextResponse {
         secure: process.env.NODE_ENV === "production",
       });
     }
+
     return response;
   }
 

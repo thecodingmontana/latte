@@ -23,7 +23,6 @@ export const user = pgTable(
     username: varchar("username", { length: 255 }).notNull(),
     avatar: text("avatar").notNull(),
     password: text("password"),
-    subscription_id: varchar("subscription_id", { length: 16 }),
     email_verified: boolean("email_verified").notNull().default(false),
     registered_2fa: boolean("registered_2fa").notNull().default(false),
     ...timestamps,
