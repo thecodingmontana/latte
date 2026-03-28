@@ -2,10 +2,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Loader2, Mail } from "lucide-react";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { type Dispatch, type SetStateAction, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import type { z } from "zod";
+import { signinAction } from "@/app/auth/signin/actions";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -17,16 +18,11 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
-import type { AuthFormData } from "@/types/auth";
+import { detectBrowser } from "@/lib/detect-browser";
 import { formSchema } from "@/zod-schema/auth";
 import OauthProviders from "../oauth/oauth-providers";
 
-interface Props {
-  setFormData: Dispatch<SetStateAction<AuthFormData>>;
-  setIsOtpSent: Dispatch<SetStateAction<boolean>>;
-}
-
-export default function SigninForm({ setFormData, setIsOtpSent }: Props) {
+export default function SigninForm() {
   const [isAuthenticating, setIsAuthenticating] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -37,17 +33,24 @@ export default function SigninForm({ setFormData, setIsOtpSent }: Props) {
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsAuthenticating(true);
     try {
-      setIsOtpSent(true);
-      setFormData((prev) => ({
-        ...prev,
+      const clientBrowser = await detectBrowser();
+
+      const result = await signinAction({
         email: values.email,
         password: values.password,
-      }));
+        clientBrowser,
+      });
 
-      return toast.success("data.message", {
+      if (result.error) {
+        return toast.error(result.error, {
+          position: "top-center",
+        });
+      }
+
+      return toast.success("Sign in successful", {
         position: "top-center",
       });
       // eslint-disable-next-line @typescript-eslint/no-explicit-any

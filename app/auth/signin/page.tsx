@@ -5,10 +5,9 @@ import { globalGETRateLimit } from "@/lib/server/requests";
 import { getCurrentSession } from "@/lib/server/session";
 
 export default async function SigninPage() {
-  if (!globalGETRateLimit()) {
+  if (!(await globalGETRateLimit())) {
     return "Too many requests";
   }
-
   const { session, user } = await getCurrentSession();
   if (session !== null) {
     if (!user.email_verified) {
@@ -22,7 +21,6 @@ export default async function SigninPage() {
     }
     return redirect("/account/dashboard");
   }
-
   return (
     <div className="flex h-screen flex-1 items-center">
       <SigninWrapper />

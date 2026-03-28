@@ -3,10 +3,8 @@ import { RefillingTokenBucket } from "./rate-limit";
 
 export const globalBucket = new RefillingTokenBucket<string>(100, 1);
 
-const header = await headers();
-
-export function globalGETRateLimit(): boolean {
-  // Note: Assumes X-Forwarded-For will always be defined.
+export async function globalGETRateLimit(): Promise<boolean> {
+  const header = await headers();
   const clientIP = header.get("X-Forwarded-For");
   if (clientIP === null) {
     return true;
@@ -14,8 +12,8 @@ export function globalGETRateLimit(): boolean {
   return globalBucket.consume(clientIP, 1);
 }
 
-export function globalPOSTRateLimit(): boolean {
-  // Note: Assumes X-Forwarded-For will always be defined.
+export async function globalPOSTRateLimit(): Promise<boolean> {
+  const header = await headers();
   const clientIP = header.get("X-Forwarded-For");
   if (clientIP === null) {
     return true;

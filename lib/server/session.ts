@@ -6,13 +6,12 @@ import {
 import { eq, sql } from "drizzle-orm";
 import { cookies } from "next/headers";
 import { cache } from "react";
+import { UAParser } from "ua-parser-js";
 import { db, tables } from "@/database/db";
 import type { User } from "./user";
 
 const SESSION_REFRESH_INTERVAL_MS = 1000 * 60 * 60 * 24 * 15;
 const SESSION_MAX_DURATION_MS = SESSION_REFRESH_INTERVAL_MS * 2;
-
-const cookie = await cookies();
 
 async function fetchUserFromDatabase(
   sessionId: string,
@@ -108,6 +107,7 @@ export function validateSessionToken(
 
 export const getCurrentSession = cache(
   async (): Promise<SessionValidationResult> => {
+    const cookie = await cookies();
     const token = cookie.get("session")?.value ?? null;
     if (token === null) {
       return { session: null, user: null };
@@ -125,7 +125,11 @@ export async function invalidateUserSessions(userId: string): Promise<void> {
   await db.delete(tables.session).where(eq(tables.session.user_id, userId));
 }
 
-export function setSessionTokenCookie(token: string, expiresAt: Date): void {
+export async function setSessionTokenCookie(
+  token: string,
+  expiresAt: Date
+): Promise<void> {
+  const cookie = await cookies();
   cookie.set("session", token, {
     httpOnly: true,
     path: "/",
@@ -135,7 +139,8 @@ export function setSessionTokenCookie(token: string, expiresAt: Date): void {
   });
 }
 
-export function deleteSessionTokenCookie(): void {
+export async function deleteSessionTokenCookie(): Promise<void> {
+  const cookie = await cookies();
   cookie.set("session", "", {
     httpOnly: true,
     path: "/",
@@ -216,4 +221,97 @@ export type SessionMetadata = {
   device: string;
   os: string;
   ipAddress: string;
+};
+
+/**
+ * Detects if browser is Brave using client hints headers
+ */
+export function detectBraveFromHeaders(
+  headers: Record<string, string>
+): boolean {
+  const secChUa = headers["sec-ch-ua"]?.toLowerCase() || "";
+  const secChUaFullVersionList =
+    headers["sec-ch-ua-full-version-list"]?.toLowerCase() || "";
+
+  return secChUa.includes("brave") || secChUaFullVersionList.includes("brave");
+}
+
+/**
+ * Enhanced browser detection
+ */
+export function detectBrowserFromHeaders(
+  headers: Record<string, string>,
+  uaParserBrowser: string | undefined
+): string {
+  if (detectBraveFromHeaders(headers)) {
+    return "Brave";
+  }
+
+  const userAgent = headers["user-agent"] || "";
+  if (userAgent.includes("Brave")) {
+    return "Brave";
+  }
+
+  return uaParserBrowser ?? "Unknown Browser";
+}
+
+async function getLocationFromIp(ip: string): Promise<string> {
+  if (
+    ip === "127.0.0.1" ||
+    ip === "::1" ||
+    ip.startsWith("192.168.") ||
+    ip.startsWith("10.")
+  ) {
+    return "Localhost";
+  }
+
+  try {
+    const response = await fetch(`http://ip-api.com/json/${ip}`);
+    if (!response.ok) {
+      return "Unknown";
+    }
+
+    const ipData = (await response.json()) as IpApiResponse;
+    if (ipData.status === "success") {
+      return `${ipData.city || "Unknown"}, ${ipData.country || "Unknown"}`;
+    }
+  } catch {
+    // ignore network errors
+  }
+
+  return "Unknown";
+}
+
+export async function createSessionMetadata(
+  headers: Record<string, string>,
+  clientBrowser?: string
+): Promise<SessionMetadata> {
+  const localIp =
+    headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
+    headers["x-real-ip"] ||
+    headers["cf-connecting-ip"] ||
+    headers["x-client-ip"] ||
+    "127.0.0.1";
+
+  const userAgent = headers["user-agent"] ?? "";
+  const { browser, device, os } = new UAParser(userAgent).getResult();
+
+  const detectedBrowser =
+    clientBrowser || detectBrowserFromHeaders(headers, browser.name);
+
+  const location = await getLocationFromIp(localIp);
+
+  return {
+    location,
+    browser: detectedBrowser,
+    device: device.vendor ?? "Unknown Device",
+    os: os.name ?? "Unknown OS",
+    ipAddress: localIp,
+  };
+}
+
+export type IpApiResponse = {
+  status: string;
+  city?: string;
+  country?: string;
 };
