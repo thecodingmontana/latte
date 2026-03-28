@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.3.0](https://github.com/thecodingmontana/latte/compare/v0.2.7...v0.3.0) (2026-03-28)
+
+### ✨ Features
+
+* **app:** :sparkles: added the signin auth check ([0106779](https://github.com/thecodingmontana/latte/commit/0106779ab7475315a0f247b8cd0b70cd3ed11730))
+
 ## [0.2.7](https://github.com/thecodingmontana/latte/compare/v0.2.6...v0.2.7) (2026-03-27)
 
 ## [0.2.6](https://github.com/thecodingmontana/latte/compare/v0.2.5...v0.2.6) (2026-03-26)
