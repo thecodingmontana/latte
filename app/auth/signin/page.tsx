@@ -11,10 +11,10 @@ export default async function SigninPage() {
   const { session, user } = await getCurrentSession();
   if (session !== null) {
     if (!user.email_verified) {
-      return redirect("/verify-email");
+      return redirect("/auth/verify-email");
     }
     if (!user.registered_2fa) {
-      return redirect("/2fa/setup");
+      return redirect("/auth/2fa/setup");
     }
     if (!session.two_factor_verified) {
       return redirect(get2FARedirect(user));

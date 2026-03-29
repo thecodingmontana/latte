@@ -1,13 +1,8 @@
 import { redirect } from "next/navigation";
-import { get2FARedirect } from "@/lib/server/2fa";
 import { globalGETRateLimit } from "@/lib/server/requests";
 import { getCurrentSession } from "@/lib/server/session";
 
-export default async function AccountLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default async function VerifyEmailPage() {
   if (!(await globalGETRateLimit())) {
     return "Too many requests";
   }
@@ -18,9 +13,11 @@ export default async function AccountLayout({
     return redirect("/auth/signin");
   }
 
-  if (user.registered_2fa && !session.two_factor_verified) {
-    return redirect(get2FARedirect(user));
+  if (user.email_verified) {
+    if (!session.two_factor_verified) {
+      return redirect("/auth/reset-password/2fa");
+    }
+    return redirect("/auth/reset-password");
   }
-
-  return <div>{children}</div>;
+  return <div>Verify Email</div>;
 }

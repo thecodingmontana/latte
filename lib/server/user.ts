@@ -19,7 +19,8 @@ export interface User {
 export async function createUser(
   email: string,
   username: string,
-  password: string
+  password: string,
+  avatar: string
 ): Promise<User> {
   const passwordHash = await hashPassword(password);
   // const recoveryCode = generateRandomRecoveryCode();
@@ -32,7 +33,7 @@ export async function createUser(
   const [row] = await db
     .insert(tables.user)
     .values({
-      avatar: "",
+      avatar,
       email,
       username,
       password: passwordHash,

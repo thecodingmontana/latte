@@ -5,7 +5,7 @@ import { globalGETRateLimit } from "@/lib/server/requests";
 import { getCurrentSession } from "@/lib/server/session";
 
 export default async function SignupPage() {
-  if (!globalGETRateLimit()) {
+  if (!(await globalGETRateLimit())) {
     return "Too many requests";
   }
 
@@ -13,10 +13,10 @@ export default async function SignupPage() {
 
   if (session !== null) {
     if (!user.email_verified) {
-      return redirect("/verify-email");
+      return redirect("/auth/verify-email");
     }
     if (!user.registered_2fa) {
-      return redirect("/2fa/setup");
+      return redirect("/auth/2fa/setup");
     }
     if (!session.two_factor_verified) {
       return redirect(get2FARedirect(user));

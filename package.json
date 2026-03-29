@@ -28,6 +28,7 @@
     "db:clear": "pnpm dlx tsx ./database/clear.ts"
   },
   "dependencies": {
+    "@faker-js/faker": "^10.4.0",
     "@hookform/resolvers": "^5.2.2",
     "@node-rs/argon2": "^2.0.2",
     "@oslojs/binary": "^1.0.0",

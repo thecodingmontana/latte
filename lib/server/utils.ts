@@ -1,4 +1,52 @@
+import { generateRandomString, type RandomReader } from "@oslojs/crypto/random";
 import { encodeBase32UpperCaseNoPadding } from "@oslojs/encoding";
+
+export function generateRandomRecoveryCode(): string {
+  const recoveryCodeBytes = new Uint8Array(10);
+  crypto.getRandomValues(recoveryCodeBytes);
+  const recoveryCode = encodeBase32UpperCaseNoPadding(recoveryCodeBytes);
+  return recoveryCode;
+}
+
+export type TimeSpanUnit = "ms" | "s" | "m" | "h" | "d" | "w";
+
+export class TimeSpan {
+  value: number;
+  unit: TimeSpanUnit;
+
+  constructor(value: number, unit: TimeSpanUnit) {
+    this.value = value;
+    this.unit = unit;
+  }
+
+  milliseconds(): number {
+    const unitMultipliers: Record<TimeSpanUnit, number> = {
+      ms: 1,
+      s: 1000,
+      m: 60_000,
+      h: 3_600_000,
+      d: 86_400_000,
+      w: 604_800_000,
+    };
+    return this.value * unitMultipliers[this.unit];
+  }
+
+  seconds(): number {
+    return this.milliseconds() / 1000;
+  }
+
+  transform(x: number): TimeSpan {
+    return new TimeSpan(this.value * x, this.unit);
+  }
+}
+
+export function isWithinExpirationDate(date: Date): boolean {
+  return date.getTime() > Date.now();
+}
+
+export function createDate(timeSpan: TimeSpan): Date {
+  return new Date(Date.now() + timeSpan.milliseconds());
+}
 
 export function generateRandomOTP(): string {
   const bytes = new Uint8Array(5);
@@ -7,9 +55,20 @@ export function generateRandomOTP(): string {
   return code;
 }
 
-export function generateRandomRecoveryCode(): string {
-  const recoveryCodeBytes = new Uint8Array(10);
-  crypto.getRandomValues(recoveryCodeBytes);
-  const recoveryCode = encodeBase32UpperCaseNoPadding(recoveryCodeBytes);
-  return recoveryCode;
+export function generateUniqueCode(length: number): string {
+  const random: RandomReader = {
+    read(bytes: Uint8Array) {
+      // Type assertion to satisfy TypeScript's overloads for crypto.getRandomValues
+      crypto.getRandomValues(bytes as any);
+    },
+  };
+
+  const alphabet =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  return generateRandomString(random, alphabet, length);
+}
+
+export function capitalize(word: string) {
+  return word.charAt(0).toUpperCase() + word.slice(1);
 }
