@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.0](https://github.com/thecodingmontana/latte/compare/v0.3.0...v0.4.0) (2026-03-29)
+
+### ✨ Features
+
+* **app:** :sparkles: added ability for users to signup ([f47fa8b](https://github.com/thecodingmontana/latte/commit/f47fa8bb5bd53f423012cc620b4ea286fb342187))
+
 ## [0.3.0](https://github.com/thecodingmontana/latte/compare/v0.2.7...v0.3.0) (2026-03-28)
 
 ### ✨ Features
