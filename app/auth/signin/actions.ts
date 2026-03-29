@@ -67,6 +67,7 @@ export async function signinAction(form: {
   if (typeof email !== "string" || typeof password !== "string") {
     return { error: "Invalid or missing fields", message: null };
   }
+
   if (email === "" || password === "") {
     return { error: "Please enter your email and password.", message: null };
   }

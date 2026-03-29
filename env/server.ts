@@ -24,6 +24,7 @@ export const env = createEnv({
             "ENCRYPTION_KEY must be a valid base64 string that decodes to exactly 16 bytes",
         }
       ),
+    RESEND_API_KEY: z.string(),
   },
   experimental__runtimeEnv: process.env,
 });
