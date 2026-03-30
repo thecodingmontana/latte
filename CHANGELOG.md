@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.1](https://github.com/thecodingmontana/latte/compare/v0.4.0...v0.4.1) (2026-03-30)
+
+### 🐛 Bug Fixes
+
+* **app:** :bug: resend failing to send verification mail to mailbox ([aeb1650](https://github.com/thecodingmontana/latte/commit/aeb1650a96fadbe8d8912aabb94a0a84a5da68d4))
+
 ## [0.4.0](https://github.com/thecodingmontana/latte/compare/v0.3.0...v0.4.0) (2026-03-29)
 
 ### ✨ Features
